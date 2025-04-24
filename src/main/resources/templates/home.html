@@ -1,0 +1,23 @@
+<!doctype html>
+
+<html xmlns="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+</head>
+
+<body>
+
+<div class="container">
+    <h1> Seja bem-vindo, <span th:text="${userName}">Convidado</span>!</h1>
+    <div class="button-container">
+        <a href="/login" class="btn">login</a>
+        <a href="/user" class="btn" sec:authorize="hasAnyRole('USER', 'ADMIN', 'MANAGER')">Usuário</a>
+        <a href="/manager" class="btn" sec:authorize="hasAnyRole('ADMIN', 'MANAGER')">Gerente</a>
+        <a href="/admin" class="btn" sec:authorize="hasAnyRole('ADMIN')">Administrador</a>
+    </div>
+</div>
+
+</body>
